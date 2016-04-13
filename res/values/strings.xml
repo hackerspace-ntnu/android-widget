@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Hackerspace Door</string>
+    <string name="action_settings">Innstillinger</string>
+    <string name="action_help">Hjelp</string>
+</resources>
