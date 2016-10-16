@@ -10,14 +10,38 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--activity android:name=".AppMainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-->
+        <service
+            android:name=".NotificationHandler">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".AppSettingsActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <receiver
             android:name=".WidgetSmallActivity"
             android:label="Liten">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <!--<action android:name="UpdateBG" />-->
+                <action android:name="com.atenstad.hackerspacedoor.STATUS_UPDATE" />
+                <action android:name="com.atenstad.hackerspacedoor.BUTTON_CLICK" />
             </intent-filter>
 
             <meta-data
@@ -29,8 +53,8 @@
             android:label="Stor">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <!--<action android:name="UpdateBG" />-->
+                <action android:name="com.atenstad.hackerspacedoor.STATUS_UPDATE" />
+                <action android:name="com.atenstad.hackerspacedoor.BUTTON_CLICK" />
             </intent-filter>
 
             <meta-data
@@ -38,12 +62,12 @@
                 android:resource="@xml/widget_large" />
         </receiver>
         <receiver
-            android:name=".WidgetLargeBgActivity"
+            android:name=".WidgetBgLargeActivity"
             android:label="Stor med bakgrunn">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <!--<action android:name="UpdateBG" />-->
+                <action android:name="com.atenstad.hackerspacedoor.STATUS_UPDATE" />
+                <action android:name="com.atenstad.hackerspacedoor.BUTTON_CLICK" />
             </intent-filter>
 
             <meta-data
@@ -51,12 +75,38 @@
                 android:resource="@xml/widget_large_bg" />
         </receiver>
         <receiver
-            android:name=".WidgetSmallBgActivity"
+            android:name=".WidgetWhiteLargeActivity"
+            android:label="Stor hvit">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.atenstad.hackerspacedoor.STATUS_UPDATE" />
+                <action android:name="com.atenstad.hackerspacedoor.BUTTON_CLICK" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_white_large" />
+        </receiver>
+        <receiver
+            android:name=".WidgetWhiteSmallActivity"
+            android:label="Liten hvit">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.atenstad.hackerspacedoor.STATUS_UPDATE" />
+                <action android:name="com.atenstad.hackerspacedoor.BUTTON_CLICK" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_white_small" />
+        </receiver>
+        <receiver
+            android:name=".WidgetBgSmallActivity"
             android:label="Liten med bakgrunn">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <!--<action android:name="UpdateBG" />-->
+                <action android:name="com.atenstad.hackerspacedoor.STATUS_UPDATE" />
+                <action android:name="com.atenstad.hackerspacedoor.BUTTON_CLICK" />
             </intent-filter>
 
             <meta-data

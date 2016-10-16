@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.atenstad.myapplication.AppMainActivity"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:text="Åpne-notifikasjon"
+        android:id="@+id/switch_open_notification"
+        android:layout_gravity="center_vertical"
+        android:checked="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:elegantTextHeight="false"
+        android:enabled="true"
+        android:textColor="@color/colorAccent"
+        android:thumbTint="@color/colorPrimary"
+        android:trackTint="@color/colorAccent"
+        android:clickable="true" />
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:text="Lukke-notifikasjon"
+        android:id="@+id/switch_close_notification"
+        android:layout_gravity="center_vertical"
+        android:checked="false"
+        android:layout_below="@+id/switch_open_notification"
+        android:layout_centerHorizontal="true"
+        android:elegantTextHeight="false"
+        android:enabled="true"
+        android:textColor="@color/colorAccent"
+        android:thumbTint="@color/colorPrimary"
+        android:trackTint="@color/colorAccent"
+        android:clickable="true" />
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:text="Lydløs"
+        android:id="@+id/switch_notification_silent"
+        android:layout_gravity="center_vertical"
+        android:checked="false"
+        android:layout_below="@+id/switch_close_notification"
+        android:layout_centerHorizontal="true"
+        android:elegantTextHeight="false"
+        android:enabled="true"
+        android:textColor="@color/colorAccent"
+        android:thumbTint="@color/colorPrimary"
+        android:trackTint="@color/colorAccent"
+        android:clickable="true" />
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:text="Vibrering"
+        android:id="@+id/switch_notification_vibration"
+        android:layout_gravity="center_vertical"
+        android:checked="false"
+        android:layout_below="@+id/switch_notification_silent"
+        android:layout_centerHorizontal="true"
+        android:elegantTextHeight="false"
+        android:enabled="true"
+        android:textColor="@color/colorAccent"
+        android:thumbTint="@color/colorPrimary"
+        android:trackTint="@color/colorAccent"
+        android:clickable="true" />
+
+</RelativeLayout>
