@@ -7,18 +7,11 @@ import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 public class NotificationHandler extends FirebaseMessagingService {
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        FirebaseMessaging.getInstance().subscribeToTopic("doorstatus");
-    }
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {

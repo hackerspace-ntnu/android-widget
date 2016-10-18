@@ -9,15 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.google.firebase.messaging.FirebaseMessaging;
-
 public class AppMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        FirebaseMessaging.getInstance().subscribeToTopic("doorstatus");
 
         setContentView(R.layout.activity_app);
 
