@@ -11,15 +11,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--activity android:name=".AppMainActivity"
+        <!--
+        activity android:name=".AppMainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity-->
-        
+        </activity
+        -->
+
+        <service
+            android:name=".TokenListener">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
         <service android:name=".NotificationHandler">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -119,7 +128,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_small_bg" />
         </receiver>
-
     </application>
 
 </manifest>
