@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.widget.RemoteViews;
 
 public class WidgetMainActivity extends AppWidgetProvider {
+
     public static final String PREFS_NAME = "com.atenstad.hackerspacedoor";
     public static final String STATUS_UPDATE = "com.atenstad.hackerspacedoor.STATUS_UPDATE";
     public static final String BUTTON_CLICK = "com.atenstad.hackerspacedoor.BUTTON_CLICK";
@@ -24,7 +25,6 @@ public class WidgetMainActivity extends AppWidgetProvider {
 
     void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
 
-        // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.activity_widget);
 
         Intent intent = new Intent(context, getClass());
@@ -47,16 +47,12 @@ public class WidgetMainActivity extends AppWidgetProvider {
             }
         }
 
-        // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
-
-
     }
 
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        // There may be multiple widgets active, so update all of them
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
@@ -66,14 +62,15 @@ public class WidgetMainActivity extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.activity_widget);
+
         if (BUTTON_CLICK.equals(intent.getAction())) {
             new StatusReader(context).execute();
         }
         if (STATUS_UPDATE.equals(intent.getAction())) {
             SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
             String status = prefs.getString("status", "error");
-
-            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.activity_widget);
 
             if (status.equals("open")) {
                 views.setImageViewResource(R.id.imageView, openImage);
@@ -86,5 +83,9 @@ public class WidgetMainActivity extends AppWidgetProvider {
             ComponentName watchWidget = new ComponentName(context, getClass());
             (AppWidgetManager.getInstance(context)).updateAppWidget(watchWidget, views);
         }
+
+        Intent clickIntent = new Intent(context, getClass());
+        clickIntent.setAction(BUTTON_CLICK);
+        views.setOnClickPendingIntent(R.id.imageView, PendingIntent.getBroadcast(context, 0, clickIntent, 0));
     }
 }
